@@ -1,0 +1,21 @@
+%table.table.table-striped
+  %thead
+    %tr
+      %th ID  
+      %th Title
+      %th Username
+      %th Password
+      %th URL
+      %th Notes
+      %th{colspan: 4} Actions
+  %tbody
+  - @entries.each do |entry|
+    %tr
+      %td= entry.id
+      %td= entry.title
+      %td= entry.username
+      %td= entry.password
+      %td= entry.url
+      %td= entry.note
+      %td= link_to "Show", entry_url(entry.id)
+      %td= link_to "Edit", edit_entry_url(entry.id)

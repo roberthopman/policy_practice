@@ -1,0 +1,8 @@
+= turbo_frame_tag @entry do
+  .col-md-6
+    = simple_form_for(@entry, data: { "turbo-frame" => "_top" }) do |f|
+      = f.error_notification
+      .form-inputs.mb-3
+        = f.input :title
+      .form-actions
+        = f.button :submit, class: "btn btn-sm btn-outline-secondary"
