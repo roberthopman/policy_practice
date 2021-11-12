@@ -14,6 +14,7 @@
         .col-2
           %h1=link_to "Entries", entries_url
           =link_to "Add a new entry", new_entry_url
+          = render 'layouts/access'
         .col-10
           %turbo-frame#flash
             = render 'layouts/flash'
