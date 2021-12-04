@@ -2,6 +2,8 @@
 
 <%= render @user %>
 
+<%= link_to "Show entries", entry_path(@user) if @user.entries.present? %>
+
 <div>
   <%= link_to "Edit this user", edit_user_path(@user) %> |
   <%= link_to "Back to users", users_path %>

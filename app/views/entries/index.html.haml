@@ -18,4 +18,4 @@
       %td= entry.url
       %td= entry.note
       %td= link_to "Show", entry_url(entry.id)
-      %td= link_to "Edit", edit_entry_url(entry.id)
+      %td= link_to "Edit", edit_entry_url(entry.id) if current_user

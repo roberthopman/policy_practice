@@ -1,1 +1,12 @@
-%h3= @entry.title
+%h1= "User entries"
+%table.table.table-striped
+  %thead
+    %tr
+      %th Title
+      %th Email
+      %th Created at
+  %tbody
+    %tr
+      %td= @entry.title
+      %td= @entry.user.email
+      %td= @entry.created_at

@@ -1,0 +1,11 @@
+<% email = "foo@bar.baz" + rand(100).to_s %>
+
+<%= button_to "Add #{email} with password: foobar", 
+  users_path, params: { 
+    user: {
+      email: email, 
+      password: "foobar",
+      password_confirmation: "foobar"
+      } 
+    }
+  %>

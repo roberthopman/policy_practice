@@ -1,12 +1,14 @@
 class EntriesController < ApplicationController
   before_action :find_entry, only: [:show, :edit, :update]
+  before_action :check_login, except: [:show, :index]
   
-  def new
+  def new    
     @entry = Entry.new
   end
 
   def create
     @entry = Entry.new(entry_params)
+    @entry.user = current_user
     if @entry.save
       redirect_to entries_url, notice: 'Entry was successfully created.'
     else      
@@ -24,7 +26,9 @@ class EntriesController < ApplicationController
     @entries = Entry.all
   end
 
-  def edit; end
+  def edit
+    authorize! @entry
+  end
 
   def update
     @entry.title = entry_params[:title]
@@ -43,5 +47,9 @@ class EntriesController < ApplicationController
 
     def find_entry
       @entry = Entry.find(params[:id])      
+    end
+
+    def check_login
+      flash[:alert] = "Login required" if require_login
     end
 end
