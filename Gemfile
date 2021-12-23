@@ -9,6 +9,7 @@ gem "simple_form"
 gem 'jsbundling-rails'
 gem 'sorcery'
 gem "action_policy"
+gem "rolify"
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails', branch: 'main'
 gem 'rails', '~> 7.0.0.alpha2'

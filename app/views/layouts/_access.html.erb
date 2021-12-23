@@ -1,4 +1,4 @@
-<h1><%=link_to "Users", users_url %></h1>
+<h3><%=link_to "Users", users_url %></h3>
 <div id="nav">
   <% if current_user %>
     <%= current_user.email %><br>
@@ -7,5 +7,6 @@
   <% else %>
     <%= link_to "Register", new_user_path %> |
     <%= link_to "Login", :login %>
+    <%= link_to "Login as user", autologin_path(User.first) if User.first %>
   <% end %>
 </div>

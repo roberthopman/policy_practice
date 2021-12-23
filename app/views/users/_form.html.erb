@@ -1,5 +1,5 @@
 
-<%= simple_form_for(@user) do |f| %>
+<%= simple_form_for(@user, data: { controller: 'nested-form', nested_form_wrapper_selector_value: '.nested-form-wrapper' }) do |f| %>
   <%= f.error_notification %>
   <%= f.error_notification message: f.object.errors[:base].to_sentence if f.object.errors[:base].present? %>
 
@@ -7,6 +7,22 @@
     <%= f.input :email %>
     <%= f.input :password %>
     <%= f.input :password_confirmation %>
+
+    <template data-nested-form-target="template">
+      <%= f.fields_for :roles, Role.new, child_index: 'NEW_RECORD' do |role_fields| %>
+        <%= render "role_form", f: role_fields %>
+      <% end %>
+    </template>
+
+    <%= f.fields_for :roles do |role_fields| %>
+      <%= render "role_form", f: role_fields %>
+    <% end %>
+
+    <div data-nested-form-target="target"></div>
+
+    <button type="button" data-action="nested-form#add">
+      Add role
+    </button>
   </div>
 
   <div class="form-actions">

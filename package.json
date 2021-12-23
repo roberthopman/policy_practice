@@ -11,7 +11,8 @@
     "esbuild": "^0.13.11",
     "esbuild-rails": "^1.0.3",
     "sass": "^1.43.4",
-    "stimulus": "^2.0.0"
+    "stimulus": "^2.0.0",
+    "stimulus-rails-nested-form": "^4.0.0"
   },
   "scripts": {
     "build": "node esbuild.config.js",

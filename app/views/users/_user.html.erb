@@ -1,12 +1,10 @@
 <div id="<%= dom_id user %>" class="scaffold_record">
   <p>
     <strong>Email:</strong>
-    <%= user.email %>
-  </p>
-
-  <p>
+    <%= user.email %><br>
+    <strong>Entries: </strong><%= user.entries.count %><br>
+    <strong>Roles: </strong><%= user.roles.map(&:name).join(", ") if user.roles.present? %><br>
     <%= link_to "Show this user", user %> |
     <%= link_to "Login as user", autologin_path(user) if user != current_user %>
-
   </p>
 </div>

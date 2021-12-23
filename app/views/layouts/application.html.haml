@@ -12,7 +12,7 @@
     .container-fluid
       .row
         .col-2
-          %h1=link_to "Entries", entries_url
+          %h3=link_to "Entries", entries_url
           =link_to "Add a new entry", new_entry_url
           = render 'layouts/access'
           = link_to "Admin", admin_path

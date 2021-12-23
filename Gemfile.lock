@@ -175,6 +175,7 @@ GEM
     rb-inotify (0.10.1)
       ffi (~> 1.0)
     redis (4.2.5)
+    rolify (6.0.0)
     ruby-next-core (0.13.1)
     ruby2_keywords (0.0.5)
     simple_form (5.0.3)
@@ -226,6 +227,7 @@ DEPENDENCIES
   rack-mini-profiler (~> 2.0)
   rails (~> 7.0.0.alpha2)
   redis (~> 4.0)
+  rolify
   simple_form
   sorcery
   spring
