@@ -1,0 +1,11 @@
+<% if logged_in? %>
+  Welcome <%= current_user.role_names %>
+<% else %>
+  Hello world
+  <br>
+  <%= link_to "Login as #{User.first.role_names}", autologin_path(User.first) if User.first %>
+  <br>
+  <%= link_to "Login as #{User.second.role_names}", autologin_path(User.second) if User.second %>
+<% end %>
+
+<%= render "layouts/create_user" %>

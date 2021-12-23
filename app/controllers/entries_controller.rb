@@ -1,7 +1,7 @@
 class EntriesController < ApplicationController
-  before_action :find_entry, only: [:show, :edit, :update]
-  before_action :check_login, except: [:show, :index]
-  
+  before_action :find_entry, only: [:show, :edit, :update, :destroy]
+  before_action :check_login
+
   def new    
     @entry = Entry.new
   end
@@ -23,6 +23,7 @@ class EntriesController < ApplicationController
   def show; end
 
   def index
+    authorize!
     @entries = Entry.all
   end
 
@@ -37,6 +38,15 @@ class EntriesController < ApplicationController
     else    
       flash.now[:alert] = "Entry update failed."
       render :edit, status: :unprocessable_entity
+    end
+  end
+
+  def destroy
+    authorize!
+    @entry.destroy
+    respond_to do |format|
+      format.html { redirect_to entries_url, notice: "Entry was successfully destroyed." }
+      format.json { head :no_content }
     end
   end
 

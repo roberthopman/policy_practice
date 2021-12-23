@@ -1,7 +1,7 @@
 class User < ApplicationRecord
   authenticates_with_sorcery!
 
-  has_many :entries
+  has_many :entries, dependent: :destroy
   has_many :roles, dependent: :destroy
   accepts_nested_attributes_for :roles, reject_if: nil, allow_destroy: true
 
@@ -9,4 +9,12 @@ class User < ApplicationRecord
   validates :password, confirmation: true, if: -> { new_record? || changes[:crypted_password] }
   validates :password_confirmation, presence: true, if: -> { new_record? || changes[:crypted_password] }
   validates :email, uniqueness: true
+
+  def has_role?(role)
+    role_names.include?(role.to_s)
+  end
+
+  def role_names
+    self.roles.map(&:name).join(", ")
+  end
 end

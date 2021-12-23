@@ -6,7 +6,7 @@
     <%= link_to "Logout", :logout, method: :post %>
   <% else %>
     <%= link_to "Register", new_user_path %> |
-    <%= link_to "Login", :login %>
-    <%= link_to "Login as user", autologin_path(User.first) if User.first %>
+    <%= link_to "Login", :login %> <br>
+    <%= link_to "Login as first user", autologin_path(User.first) if User.first %>
   <% end %>
 </div>

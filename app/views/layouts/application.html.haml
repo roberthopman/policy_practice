@@ -12,10 +12,14 @@
     .container-fluid
       .row
         .col-2
-          %h3=link_to "Entries", entries_url
-          =link_to "Add a new entry", new_entry_url
-          = render 'layouts/access'
-          = link_to "Admin", admin_path
+          - if logged_in? 
+            - if allowed_to?(:index?, Entry)
+              %h3=link_to "Entries", entries_url
+              =link_to "Add a new entry", new_entry_url
+              = render 'layouts/access'
+              = link_to "Admin", admin_path
+            - elsif current_user
+              = link_to "Logout", :logout, method: :post
         .col-10
           %turbo-frame#flash
             = render 'layouts/flash'

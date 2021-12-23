@@ -5,8 +5,8 @@
 <%= link_to "Show entries", entry_path(@user) if @user.entries.present? %>
 
 <div>
-  <%= link_to "Edit this user", edit_user_path(@user) %> |
+  <%= link_to "Edit this user", edit_user_path(@user) if logged_in? %> |
   <%= link_to "Back to users", users_path %>
 
-  <%= button_to "Destroy this user", user_path(@user), method: :delete %>
+  <%= button_to "Destroy this user", user_path(@user), method: :delete if logged_in? %>
 </div>

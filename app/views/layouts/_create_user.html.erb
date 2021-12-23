@@ -1,0 +1,18 @@
+<% email = "foo@bar.baz" + rand(100).to_s %>
+<% Role::USER_ROLES.each do |role| %>
+  <%= button_to "Create #{role} with #{email} / foobar", 
+    users_path, params: { 
+      user: {
+        email: email, 
+        password: "foobar",
+        password_confirmation: "foobar",
+        roles_attributes: {
+          rand(1...100).to_s => {
+            name: role, 
+            "_destroy" => :false,
+          }
+        }
+      }
+    }
+  %>
+<% end %>

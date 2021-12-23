@@ -1,10 +1,9 @@
 class EntryPolicy < ApplicationPolicy
   # See https://actionpolicy.evilmartians.io/#/writing_policies
   #
-  # def index?
-  #   true
-  # end
-  #
+  def index?
+    user && user.has_role?(:maintainer) || user.has_role?(:developer)
+  end
 
   def edit?
     check?(:update?)
@@ -13,6 +12,10 @@ class EntryPolicy < ApplicationPolicy
   def update?
     # here we can access our context and record
     (user.id == record.user_id)
+  end
+
+  def destroy?
+    user.has_role? :maintainer
   end
 
   # Scoping

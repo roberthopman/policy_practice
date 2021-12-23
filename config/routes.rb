@@ -5,7 +5,8 @@ Rails.application.routes.draw do
   get 'autologin/:id', to: 'user_sessions#autologin', as: 'autologin'
   get 'admin' => 'admins#index', as: 'admin'
 
-  root "entries#index"
   resources :entries
   resources :users
+
+  root "application#hello"
 end

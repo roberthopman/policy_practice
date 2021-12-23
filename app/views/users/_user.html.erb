@@ -5,6 +5,6 @@
     <strong>Entries: </strong><%= user.entries.count %><br>
     <strong>Roles: </strong><%= user.roles.map(&:name).join(", ") if user.roles.present? %><br>
     <%= link_to "Show this user", user %> |
-    <%= link_to "Login as user", autologin_path(user) if user != current_user %>
+    <%= user != current_user ? (link_to "Login as user", autologin_path(user)) : "Logged in as this user"  %>
   </p>
 </div>

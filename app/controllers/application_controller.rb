@@ -7,7 +7,7 @@ class ApplicationController < ActionController::Base
     redirect_to(request.referrer || root_path)
   end
 
-  def index
-    render 'admin/index'
+  def hello
+    render 'layouts/hello'
   end
 end
